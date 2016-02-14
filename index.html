@@ -61,6 +61,20 @@
 		            position: results[0].geometry.location
         });
 		        
+
+		           var panorama = new google.maps.StreetViewPanorama(
+							      document.getElementById('map'), {
+							        position: results[0].geometry.location,
+							        pov: {
+							          heading: 34,
+							          pitch: 10
+							        }
+							      });
+		           console.log("debug 1");
+				map.setStreetView(panorama);
+					console.log("debug 2");
+
+
 		      } else {
 		        alert("Geocode was not successful for the following reason: " + status);
 		      }
