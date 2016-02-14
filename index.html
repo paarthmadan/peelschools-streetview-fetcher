@@ -6,18 +6,55 @@
 		      #map { height: 100%; }
     	</style>
 		<title>Peelschools Google API Trial</title>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+
 	</head>
 <body>
     <div id="map"></div>
-    <script type="text/javascript">
 
+
+    <script type="text/javascript">
+    	var geocoder;
 		var map;
 		function initMap() {
+		geocoder = new google.maps.Geocoder();
 		  map = new google.maps.Map(document.getElementById('map'), {
-		    center: {lat: 43.7368489, lng: -79.730482},
+		    center: {lat: 43.7368489, lng: -81.3},
 		    zoom: 17
 		  });
+		  codeAddress();
+
 		}
+
+		
+
+		 function codeAddress() {
+		 	
+
+   		var address = "1370 Williams Pkwy, Brampton, ON L6S 1V3";
+
+		    geocoder.geocode( { 'address': address}, function(results, status) {
+
+
+		      if (status == google.maps.GeocoderStatus.OK) {
+		        
+		        map.setCenter(results[0].geometry.location);
+		        var lat = results[0].geometry.location.lat();
+		        var lng = results[0].geometry.location.lng();
+
+		        console.log(lat);
+		        console.log(lng);
+		        
+		      } else {
+		        alert("Geocode was not successful for the following reason: " + status);
+		      }
+		    });
+  }
+
+
+
 
     </script>
 
