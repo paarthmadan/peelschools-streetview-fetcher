@@ -24,16 +24,24 @@
 		    center: {lat: 43.7368489, lng: -81.3},
 		    zoom: 17
 		  });
-		  codeAddress();
+
+		  getInput();
+
+		}
+
+		var getInput = function(){
+			var address = prompt("Enter school address");
+
+			codeAddress(address);
 
 		}
 
 		
 
-		 function codeAddress() {
+		 function codeAddress(address) {
 		 	
 
-   		var address = "1370 Williams Pkwy, Brampton, ON L6S 1V3";
+   		
 
 		    geocoder.geocode( { 'address': address}, function(results, status) {
 
@@ -46,6 +54,12 @@
 
 		        console.log(lat);
 		        console.log(lng);
+
+
+		         var marker = new google.maps.Marker({
+		            map: map, 
+		            position: results[0].geometry.location
+        });
 		        
 		      } else {
 		        alert("Geocode was not successful for the following reason: " + status);
