@@ -16,19 +16,25 @@
 
 
     <script type="text/javascript">
+
+
     	var geocoder;
 		var map;
+
+		//initializes map
 		function initMap() {
+		//calls google maps API, and assigns Geocoder method to variable geocoder
 		geocoder = new google.maps.Geocoder();
 		  map = new google.maps.Map(document.getElementById('map'), {
 		    center: {lat: 43.7368489, lng: -81.3},
 		    zoom: 17
 		  });
 
+		  //calls function getInput
 		  getInput();
 
 		}
-
+		//ask user for input, using prompt
 		var getInput = function(){
 			var address = prompt("Enter school address");
 
@@ -37,18 +43,21 @@
 		}
 
 		
-
+		//function that required address parametre, uses address to determine lat and long, and place
+		//marker on origin
 		 function codeAddress(address) {
 		 	
 
    		
-
+		 	//google function 'geocode' allows to do this
 		    geocoder.geocode( { 'address': address}, function(results, status) {
 
 
 		      if (status == google.maps.GeocoderStatus.OK) {
 		        
 		        map.setCenter(results[0].geometry.location);
+
+		        //assings latitude and longtitude to var's lat ang lng
 		        var lat = results[0].geometry.location.lat();
 		        var lng = results[0].geometry.location.lng();
 
@@ -61,7 +70,7 @@
 		            position: results[0].geometry.location
         });
 		        
-
+		         //assings StreetViewPanorama to panorama object
 		           var panorama = new google.maps.StreetViewPanorama(
 							      document.getElementById('map'), {
 							        position: results[0].geometry.location,
@@ -86,7 +95,7 @@
 
     </script>
 
-
+    <!-- allows for the use of google maps api -->
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiPggjmU6rCAjgabPRGCcPe_Hu0g8Be8k&callback=initMap">
     </script>
