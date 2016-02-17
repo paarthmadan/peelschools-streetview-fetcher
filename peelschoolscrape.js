@@ -1,5 +1,6 @@
 var request = require('request');
 var cheerio = require('cheerio');
+var chalk = require('chalk');
 var listOfSchools = [];
 var counter = 0;
 var indexes = 0;
@@ -11,10 +12,27 @@ console.log("START \n");
 
 
 var next = function(){
-	console.log("we're done");
+	console.log("ALL PEELSCHOOLS: \n");
+
+	counter = 0;
 
 	for(var i = 0; i < listOfSchools.length; i++){
-		console.log(listOfSchools[i]);
+		
+		if(counter  <= 3){
+		console.log(chalk.cyan(listOfSchools[i]));	
+		}else if(counter <= 6){
+		console.log(chalk.blue(listOfSchools[i]));
+		}else if(counter <= 9){
+		console.log(chalk.green(listOfSchools[i]));	
+		}else if(counter <= 12){
+		console.log(chalk.red(listOfSchools[i]));		
+		}else if(counter >= 13){
+			counter = 0;
+		}
+		
+		counter++;
+		
+ 
 	}
 
 }
