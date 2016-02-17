@@ -4,9 +4,9 @@ var cheerio = require('cheerio');
 console.log("START \n\n\n\n\n\n\n\n\n\n\n\n\n");
 
 
+var scrape = function(letter){
 
-
-request('http://www.peelschools.org/schools/all/Pages/default.aspx?psb-letter=' + 'a' , function(err, resp, html){
+request('http://www.peelschools.org/schools/all/Pages/default.aspx?psb-letter=' + letter , function(err, resp, html){
 	var $ = cheerio.load(html);
 	
 
@@ -24,4 +24,11 @@ request('http://www.peelschools.org/schools/all/Pages/default.aspx?psb-letter=' 
 
 });
 
+}
 
+scrape('A');
+scrape('E');
+scrape('I');
+scrape('M');
+scrape('Q');
+scrape('V');
