@@ -4,11 +4,42 @@ var chalk = require('chalk');
 var listOfSchools = [];
 var counter = 0;
 var indexes = 0;
+var empty = false;
 
 
 console.log("START \n");
 
-
+var isEmpty = function(school){
+	if(
+		school.charAt(0) != 'A' &&
+		school.charAt(0) != 'B' &&
+		school.charAt(0) != 'C' &&
+		school.charAt(0) != 'D' &&
+		school.charAt(0) != 'E' &&
+		school.charAt(0) != 'F' &&
+		school.charAt(0) != 'G' &&
+		school.charAt(0) != 'H' &&
+		school.charAt(0) != 'I' &&
+		school.charAt(0) != 'J' &&
+		school.charAt(0) != 'K' &&
+		school.charAt(0) != 'L' &&
+		school.charAt(0) != 'M' &&
+		school.charAt(0) != 'N' &&
+		school.charAt(0) != 'O' &&
+		school.charAt(0) != 'P' &&
+		school.charAt(0) != 'Q' &&
+		school.charAt(0) != 'R' &&
+		school.charAt(0) != 'S' &&
+		school.charAt(0) != 'T' &&
+		school.charAt(0) != 'U' &&
+		school.charAt(0) != 'V' &&
+		school.charAt(0) != 'W' &&
+		school.charAt(0) != 'X' &&
+		school.charAt(0) != 'Y' &&
+		school.charAt(0) != 'Z' ){
+		return "empty";
+	}
+}
 
 
 var next = function(){
@@ -17,25 +48,35 @@ var next = function(){
 	counter = 0;
 
 	for(var i = 0; i < listOfSchools.length; i++){
+
+		// var temp = listOfSchools[i].split(" ");
+
+		// var typeOfSchool = temp[temp.length - 2];
 		
-		if(counter  <= 3){
-		console.log(chalk.cyan(listOfSchools[i]));	
-		}else if(counter <= 6){
-		console.log(chalk.blue(listOfSchools[i]));
-		}else if(counter <= 9){
-		console.log(chalk.green(listOfSchools[i]));	
-		}else if(counter <= 12){
-		console.log(chalk.red(listOfSchools[i]));		
-		}else if(counter >= 13){
-			counter = 0;
-		}
+
+		// console.log(typeOfSchool + "\t");
+		
+			if(counter  <= 3){
+			console.log(chalk.cyan(listOfSchools[i]));	
+			}else if(counter <= 6){
+			console.log(chalk.blue(listOfSchools[i]));
+			}else if(counter <= 9){
+			console.log(chalk.green(listOfSchools[i]));	
+			}else if(counter <= 12){
+			console.log(chalk.red(listOfSchools[i]));		
+			}else if(counter >= 13){
+				counter = 0;
+			}
+		
+
 		
 		counter++;
 		
+		}
  
 	}
 
-}
+
 
 var sixth = function(){
 	request('http://www.peelschools.org/schools/all/Pages/default.aspx?psb-letter=V' , function(err, resp, html){
@@ -45,8 +86,12 @@ var sixth = function(){
 
 			indexes++;
 			var school = $(this).text();
-			
-			listOfSchools.push(school);
+			var check = isEmpty(school);
+			if(check == "empty"){
+				// console.log("debug checks")
+			}else{
+				listOfSchools.push(school);
+			}
 			// console.log(school);
 		});
 
@@ -64,8 +109,12 @@ var fifth = function(){
 
 			indexes++;
 			var school = $(this).text();
-			
-			listOfSchools.push(school);
+				var check = isEmpty(school);
+			if(check == "empty"){
+				// console.log("debug checks")
+			}else{
+				listOfSchools.push(school);
+			}
 			// console.log(school);
 		});
 		sixth();
@@ -81,8 +130,12 @@ var fourth = function(){
 
 			indexes++;
 			var school = $(this).text();
-			
-			listOfSchools.push(school);
+			var check = isEmpty(school);
+			if(check == "empty"){
+				// console.log("debug checks")
+			}else{
+				listOfSchools.push(school);
+			}
 			// console.log(school);
 		});
 		fifth();
@@ -98,8 +151,12 @@ var third = function(){
 
 			indexes++;
 			var school = $(this).text();
-			
-			listOfSchools.push(school);
+				var check = isEmpty(school);
+			if(check == "empty"){
+				// console.log("debug checks")
+			}else{
+				listOfSchools.push(school);
+			}
 			// console.log(school);
 		});
 		fourth();
@@ -115,8 +172,12 @@ var second = function(){
 
 			indexes++;
 			var school = $(this).text();
-			
-			listOfSchools.push(school);
+				var check = isEmpty(school);
+			if(check == "empty"){
+				// console.log("debug checks")
+			}else{
+				listOfSchools.push(school);
+			}
 			// console.log(school);
 		});
 		third();
@@ -134,8 +195,12 @@ var first = function(){
 
 			indexes++;
 			var school = $(this).text();
-			
-			listOfSchools.push(school);
+			var check = isEmpty(school);
+			if(check == "empty"){
+				// console.log("debug checks")
+			}else{
+				listOfSchools.push(school);
+			}
 			// console.log(school);
 		});
 		second();
