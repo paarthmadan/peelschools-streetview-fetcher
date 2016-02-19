@@ -49,28 +49,39 @@ var next = function(){
 
 	for(var i = 0; i < listOfSchools.length; i++){
 
-		// var temp = listOfSchools[i].split(" ");
+		var temp = listOfSchools[i].split(" ");
 
-		// var typeOfSchool = temp[temp.length - 2];
+		var typeOfSchool = temp[temp.length - 2];
 		
 
 		// console.log(typeOfSchool + "\t");
 		
-			if(counter  <= 3){
-			console.log(chalk.cyan(listOfSchools[i]));	
-			}else if(counter <= 6){
+
+		if(typeOfSchool == "Public"){
+			console.log(chalk.cyan(listOfSchools[i]));
+		}else if (typeOfSchool == "Middle"){
+			console.log(chalk.red(listOfSchools[i]));
+		}else if (typeOfSchool == "Secondary"){
+			console.log(chalk.black(listOfSchools[i]));
+		}else{
 			console.log(chalk.blue(listOfSchools[i]));
-			}else if(counter <= 9){
-			console.log(chalk.green(listOfSchools[i]));	
-			}else if(counter <= 12){
-			console.log(chalk.red(listOfSchools[i]));		
-			}else if(counter >= 13){
-				counter = 0;
-			}
+		}
+
+		// 	if(counter  <= 3){
+		// 	console.log(chalk.cyan(listOfSchools[i]));	
+		// 	}else if(counter <= 6){
+		// 	console.log(chalk.blue(listOfSchools[i]));
+		// 	}else if(counter <= 9){
+		// 	console.log(chalk.green(listOfSchools[i]));	
+		// 	}else if(counter <= 12){
+		// 	console.log(chalk.red(listOfSchools[i]));		
+		// 	}else if(counter >= 13){
+		// 		counter = 0;
+		// 	}
 		
 
 		
-		counter++;
+		// counter++;
 		
 		}
  
@@ -209,18 +220,5 @@ var first = function(){
 }
 
 first();
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
