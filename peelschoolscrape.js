@@ -5,6 +5,8 @@ var listOfSchools = [];
 var counter = 0;
 var indexes = 0;
 var empty = false;
+var baseGoogleUrl = 'https://www.google.ca/search?sourceid=chrome-psyapi2&ion=1&espv=2&ie=UTF-8&q='
+
 
 
 console.log("START \n");
@@ -42,6 +44,24 @@ var isEmpty = function(school){
 }
 
 
+var addressScrape = function(address){
+	var addressSplit = address.split(" ");
+	var len = addressSplit.length;
+	var url = "";
+
+	for(var i = 0; i < len; i++){
+
+		var temp = addressSplit[i] + "%20";
+		var url = url + temp;
+	}
+
+	
+
+
+	
+}
+
+
 var next = function(){
 	console.log("ALL PEELSCHOOLS: \n");
 
@@ -67,6 +87,8 @@ var next = function(){
 			console.log(chalk.blue(listOfSchools[i]));
 		}
 
+		addressScrape(listOfSchools[i]);
+
 		// 	if(counter  <= 3){
 		// 	console.log(chalk.cyan(listOfSchools[i]));	
 		// 	}else if(counter <= 6){
@@ -86,6 +108,8 @@ var next = function(){
 		}
  
 	}
+
+
 
 
 
