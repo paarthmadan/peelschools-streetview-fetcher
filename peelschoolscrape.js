@@ -1,3 +1,14 @@
+var express = require('express');
+var app = express();
+
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/index.html');
+});
+
+app.listen(3000, function () {
+  console.log('listening on localhost -- success');
+});
+
 var request = require('request');
 var cheerio = require('cheerio');
 var chalk = require('chalk');
@@ -5,7 +16,7 @@ var listOfSchools = [];
 var counter = 0;
 var indexes = 0;
 var empty = false;
-var baseGoogleUrl = 'https://www.google.ca/search?sourceid=chrome-psyapi2&ion=1&espv=2&ie=UTF-8&q='
+var baseGoogleUrl = 'https://www.google.ca/maps/search/'
 
 
 
@@ -55,7 +66,9 @@ var addressScrape = function(address){
 		var url = url + temp;
 	}
 
-	
+	request(baseGoogleUrl + url, function(err, resp, html){
+		console.log(html);
+	});
 
 
 	
